@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todos</title>
+</head>
+<body>
+    <h1>Todo App</h1>
+   <h2><%= category != null ? category : '' %> </h2>
+    <a href="/todos/new">Create a new todo item</a>
+    <% todos.forEach(todo => { %>
+     <h4><a href="/todos/<%= todo._id %>"><%= todo.name %></a></h4>
+     <p><%= todo.desc %> </p>
+     <p><a href="/todos?category=<%= todo.category %>"><%= todo.category %></a></p>
+     <a href="/todos/<%= todo._id %>/edit">edit</a>
+     <form action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
+        <button>Delete</button>
+    </form>
+     <hr>
+    <% }) %>
+    <a href="/todos">back to all todo</a>
+</body>
+</html>
